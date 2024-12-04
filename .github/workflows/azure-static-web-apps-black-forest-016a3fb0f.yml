@@ -38,14 +38,14 @@ jobs:
       # Step 4: Build the Angular application
       - name: Build Application
         run: |
-          npm run build -- --prod --output-path=dist/airbnb-clone-front --stats-json
+          npm run build -- --configuration production --output-path=dist/airbnb-clone-front --stats-json
           echo "Build completed."
 
       # Step 5: Analyze Bundle Size (Optional - for debugging)
       - name: Analyze Bundle Size
         if: always()
         run: |
-          npx webpack-bundle-analyzer dist/stats.json --mode=static --open=false
+          npx webpack-bundle-analyzer dist/airbnb-clone-front/stats.json --mode=static --no-open
           echo "Bundle analysis completed."
 
       # Step 6: Deploy to Azure Static Web Apps
